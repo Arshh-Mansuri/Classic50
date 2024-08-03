@@ -1,0 +1,46 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<form action="{% url 'listing' %}" method="POST">
+    {% csrf_token %}
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Title </label>
+      <input type="text" required class="form-control"  name="title" >
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label"> Price  </label>
+        <input type="number" required class="form-control"  name="price" >
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label"> Story  </label>
+        <input type="text" required class="form-control"  name="story" >
+      </div>
+      <div class="mb-3">
+      <label for="cars">Choose a car:</label>
+
+  <select name="category" id="category">
+    {% for cat in categories %}
+    <option value="{{cat.id}}">{{cat.name}}</option>
+    {% endfor %}
+   
+  </div>
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label"> Photo Link  </label>
+        <input type="text" required class="form-control"  name="imageurl" >
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label"> You Tube video Link  </label>
+        <input type="text" required class="form-control"  name="ytlink" >
+      </div>
+    
+    
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+
+    
+{% endblock %}
